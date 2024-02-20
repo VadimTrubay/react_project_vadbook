@@ -1,0 +1,23 @@
+.menu {
+  grid-area: B;
+  background-color: var(--brand-color);
+  border: solid 1px #ff7254;
+  border-radius: 3px;
+}
+
+.menu-item {
+  list-style: none;
+
+  padding: 10px;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: var(--brand-second-color);
+
+}
+
+.menu-item a:hover {
+  color: var(--brand-color-hover)
+}
+

@@ -1,0 +1,35 @@
+* {
+  margin: 2px;
+  padding: 0;
+  box-sizing: border-box;
+  --brand-color: #006ca6;
+  --brand-font: 'Times New Roman';
+  --brand-background-color: #eaeaea;
+  --brand-second-color: #ffffff;
+  --brand-footer-color: #838383;
+  --brand-color-hover: #d5d4d4;
+
+}
+
+body {
+  font-family: var(--brand-font);
+  /*font-size: 15px;*/
+   width: 100%;
+   min-height: 100vh;
+}
+
+.App {
+  display: grid;
+  column-gap:  1px;
+  row-gap:  1px;
+  grid-template-columns: 1fr 7fr;
+  grid-template-rows: 4fr 500px 2fr;
+  grid-template-areas:
+    "A A"
+    "B C"
+    "D D";
+  /*justify-items: stretch;*/
+  /* align-items: center; */
+
+}
+
