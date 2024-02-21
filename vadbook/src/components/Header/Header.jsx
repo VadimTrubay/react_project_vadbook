@@ -1,11 +1,12 @@
-import React from 'react';
-import "./Header.css"
-import logo from './images/logo.png';
+import React from "react";
+import styles from "./Header.module.css"
+import logo from "./images/logo.png";
+import {Link} from "react-router-dom";
 
 function Header() {
   return (
-    <div className="Header">
-      <img src={logo} alt="Main header"/>
+    <div className={styles.header}>
+      <Link to="/"><img src={logo} alt="Main header"/></Link>
     </div>
   );
 }

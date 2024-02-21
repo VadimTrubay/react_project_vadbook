@@ -1,13 +1,13 @@
-.Header {
+.header {
   display: grid;
   grid-area: A;
   background-color: var(--brand-color);
-  border: solid 1px #ff7254;
+  /*border: solid 1px #ff7254;*/
   border-radius: 3px;
 }
 
-.Header img {
+.header img {
   justify-items: start;
-  width: 10%;
+  width: auto;
 
 }

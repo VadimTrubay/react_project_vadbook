@@ -1,0 +1,30 @@
+.contacts {
+  border-right: solid 2px #000000;
+  width: 120px;
+  height: 400px;
+  color: #234345;
+  padding:  10px;
+}
+
+.contacts ul li a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.contacts ul li {
+  padding: 5px;
+  color: #000000;
+}
+
+.contacts span {
+  color: #0057c9;
+}
+
+.item a:hover {
+  color: var(--brand-color-hover)
+}
+
+
+.item a.active {
+  color: var(--brand-color-hover)
+}
