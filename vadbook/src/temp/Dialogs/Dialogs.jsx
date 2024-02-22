@@ -7,7 +7,7 @@ function Dialogs(props) {
   // console.log(props)
   return (
     <div className={styles.dialogs}>
-      <Chat userData={props.userData} id={props.id} />
+      <Chat />
     </div>
   );
 }

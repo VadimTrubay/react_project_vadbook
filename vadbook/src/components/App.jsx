@@ -10,7 +10,7 @@ import Photo from "./Content/Photo/Photo";
 import Profile from "./Content/Profile/Profile";
 import Settings from "./Content/Settings/Settings";
 import userData from "../Database/Database";
-import Dialogs from "./Content/Messages/Dialogs/Dialogs";
+import Contacts from "./Content/Messages/Contacts/Contacts";
 
 
 function App() {
@@ -21,19 +21,19 @@ function App() {
         <Footer />
         <Navbar />
         <Routes>
-          <Route exect path="/messages" element={<Messages userData={userData} />} />
+
+          <Route exact path="/messages" element={<Contacts data={userData} />} />
           <Route path="/music" element={<Music />} />
           <Route path="/photo" element={<Photo />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path={`/dialogs/1`} element={<Dialogs userData={userData[0]} id="1"/>} />
-          <Route path={`/dialogs/2`} element={<Dialogs userData={userData[1]} id="2"/>} />
-          <Route path={`/dialogs/3`} element={<Dialogs userData={userData[2]} id="3"/>} />
-          <Route path={`/dialogs/4`} element={<Dialogs userData={userData[3]} id="4"/>} />
-          <Route path={`/dialogs/5`} element={<Dialogs userData={userData[4]} id="5"/>} />
-
-          {/*{userData.map((userId) => (*/}
-          {/*  <Route path={`/dialogs/${userId}`} element={<Messages userData={userData} id={userId}/>} />*/}
+          <Route path="/contact/1" element={<Messages />} />
+          {/*{userData.map((user) => (*/}
+          {/*  <Route*/}
+          {/*    key={user}*/}
+          {/*    path={`/contact/${user}`}*/}
+          {/*    element={<Messages id={user.id} name={user.name} age={user.age} message={user.message}/>}*/}
+          {/*  />*/}
           {/*))}*/}
         </Routes>
       </BrowserRouter>

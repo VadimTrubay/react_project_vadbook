@@ -1,7 +1,8 @@
 .contacts {
-  border-right: solid 2px #000000;
-  width: 120px;
-  height: 400px;
+  display: flex;
+  flex-direction: row;
+  /*width: 120px;*/
+  /*height: 400px;*/
   color: #234345;
   padding:  10px;
 }
@@ -12,6 +13,7 @@
 }
 
 .contacts ul li {
+  list-style-type: none;
   padding: 5px;
   color: #000000;
 }
@@ -28,3 +30,12 @@
 .item a.active {
   color: var(--brand-color-hover)
 }
+
+.nav {
+  border-right: solid 2px #000000;
+  width: 120px;
+}
+
+
+
+
