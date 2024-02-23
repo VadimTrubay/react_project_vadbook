@@ -1,14 +1,14 @@
 import React from "react";
-import s from "./Contacts.module.css";
+import styles from "./Contacts.module.css";
 import {NavLink} from "react-router-dom";
 
 function PrepareData(props) {
-  const checkIsActive = ({isActive}) => isActive ? `${s.active}` : ""
+  const checkIsActive = ({isActive}) => isActive ? `${styles.active}` : ""
 
-  return (props.data.map((user) => (
-    <li key={user.id}>
-      <NavLink to={`/chat/${user.id}`} className={checkIsActive(user)}>
-        {user.name}
+  return (props.contacts.map((contact) => (
+    <li key={contact.id}>
+      <NavLink to={`/chat/${contact.id}`} className={checkIsActive(contact)}>
+        {contact.name}
       </NavLink>
     </li>
 
@@ -18,11 +18,11 @@ function PrepareData(props) {
 
 function Contacts(props) {
   return (
-    <div className={s.contacts}>
-      <nav className={s.nav}>
+    <div className={styles.contacts}>
+      <nav className={styles.nav}>
         <span>Contacts</span>
-        <ul className={s.item}>
-          <PrepareData data={props.data}/>
+        <ul className={styles.item}>
+          <PrepareData contacts={props.contacts}/>
         </ul>
       </nav>
     </div>

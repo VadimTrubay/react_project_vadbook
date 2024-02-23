@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './tests/reportWebVitals';
 import App from "./components/App";
-import data from "./Database/Database";
+import contacts from "./Database/Database";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <App data={data}/>
+        <App contacts={contacts}/>
     </React.StrictMode>
 );
 

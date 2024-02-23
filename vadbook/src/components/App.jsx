@@ -21,21 +21,16 @@ function App(props) {
         <Navbar/>
         <Routes>
 
-          <Route exact path="/messages" element={<Contacts data={props.data}/>}/>
-          <Route path="/music" element={<Music/>}/>
-          <Route path="/photo" element={<Photo/>}/>
-          <Route path="/profile" element={<Profile/>}/>
-          <Route path="/settings" element={<Settings/>}/>
-          {props.data.map((user) => (
+          <Route exact path="/messages" element={<Contacts contacts={props.contacts} />}/>
+          <Route path="/music" element={<Music />}/>
+          <Route path="/photo" element={<Photo />}/>
+          <Route path="/profile" element={<Profile />}/>
+          <Route path="/settings" element={<Settings />}/>
+          {props.contacts.map((user) => (
             <Route
               key={user.id}
               path={`/chat/${user.id}`}
-              element={<Messages
-                data={props.data}
-                id={user.id}
-                name={user.name}
-                message={user.message}
-              />}
+              element={<Messages contacts={props.contacts} user={user} />}
             />
           ))}
         </Routes>

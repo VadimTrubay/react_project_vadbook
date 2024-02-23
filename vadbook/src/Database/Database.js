@@ -1,4 +1,4 @@
-const data = [
+const contacts = [
   {
     id: 1,
     name: "John",
@@ -31,4 +31,4 @@ const data = [
   }
 ]
 
-export default data
+export default contacts

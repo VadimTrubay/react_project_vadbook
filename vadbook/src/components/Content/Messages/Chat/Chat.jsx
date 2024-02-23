@@ -7,9 +7,9 @@ function Chat(props) {
             <div className={styles.board}>
               <p>Chat</p>
               <div>
-                {/*<p>id : {props.id}</p>*/}
-                <p>name: {props.name}</p>
-                <p>message: {props.message}</p>
+                {/*<p>id : {props.user.id}</p>*/}
+                <p>name: {props.user.name}</p>
+                <p>message: {props.user.message}</p>
               </div>
               <div className={styles.input}>
                 <textarea name="" id="" cols="40" rows="2"></textarea>
