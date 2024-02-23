@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 function Header() {
   return (
     <div className={styles.header}>
-      <Link to="/"><img src={logo} alt="Main header"/></Link>
+      <Link to="/messages"><img src={logo} alt="Main header"/></Link>
     </div>
   );
 }

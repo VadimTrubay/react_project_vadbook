@@ -4,7 +4,7 @@ import styles from "./Photo.module.css"
 function Photo() {
     return (
         <div className={styles.photo}>
-          News
+          Photo
         </div>
     );
 }

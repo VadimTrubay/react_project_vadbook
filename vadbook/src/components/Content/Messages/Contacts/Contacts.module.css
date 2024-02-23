@@ -4,7 +4,7 @@
   /*width: 120px;*/
   /*height: 400px;*/
   color: #234345;
-  padding:  10px;
+  margin:  10px;
 }
 
 .contacts ul li a {
@@ -13,8 +13,8 @@
 }
 
 .contacts ul li {
-  list-style-type: none;
-  padding: 5px;
+  /*list-style-type: none;*/
+  margin: 5px;
   color: #000000;
 }
 

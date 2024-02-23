@@ -13,9 +13,9 @@
   color: var(--brand-second-color);
 }
 
-/*.item a:hover {*/
-/*  color: var(--brand-color-hover)*/
-/*}*/
+.item a:hover {
+  color: var(--brand-color-hover)
+}
 
 
 .item a.active {

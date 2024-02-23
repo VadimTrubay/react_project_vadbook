@@ -1,14 +1,13 @@
 import React from "react";
 import s from "./Contacts.module.css";
 import {NavLink} from "react-router-dom";
-import Chat from "./Chat/Chat";
 
 function PrepareData(props) {
   const checkIsActive = ({isActive}) => isActive ? `${s.active}` : ""
 
   return (props.data.map((user) => (
     <li key={user.id}>
-      <NavLink to={`/contact/${user.id}`} className={checkIsActive(user)}>
+      <NavLink to={`/chat/${user.id}`} className={checkIsActive(user)}>
         {user.name}
       </NavLink>
     </li>
@@ -23,10 +22,9 @@ function Contacts(props) {
       <nav className={s.nav}>
         <span>Contacts</span>
         <ul className={s.item}>
-          <PrepareData data={props.data} />
+          <PrepareData data={props.data}/>
         </ul>
       </nav>
-      <Chat/>
     </div>
   );
 }
