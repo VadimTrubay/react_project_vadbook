@@ -1,5 +1,5 @@
 * {
-  margin: 1px;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
   --brand-color: #0057c9;
@@ -12,20 +12,24 @@
 
 }
 
+.container {
+  max-width: 900px;
+  display: block;
+  align-items: center;
+  background-color: var(--brand-background-color);
+}
+
 body {
   font-family: var(--brand-font);
-  /*font-size: 15px;*/
   font-weight: 600;
-   width: 100%;
-   min-height: 100vh;
 }
 
 .app {
   display: grid;
   column-gap:  1px;
   row-gap:  1px;
-  grid-template-columns: 1fr 7fr;
-  grid-template-rows: 4fr 450px 2fr;
+  grid-template-columns: 130px 7fr;
+  grid-template-rows: 4fr 330px 2fr;
   grid-template-areas:
     "A A"
     "B C"

@@ -7,6 +7,7 @@ function Chat(props) {
             <div className={styles.board}>
               <p>Chat</p>
               <div>
+                <img className={styles.photo} src={props.user.photo} alt="photo"/>
                 {/*<p>id : {props.user.id}</p>*/}
                 <p>name: {props.user.name}</p>
                 <p>message: {props.user.message}</p>

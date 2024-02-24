@@ -1,0 +1,62 @@
+.friends {
+
+  /*width: 120px;*/
+  /*height: 400px;*/
+  color: #234345;
+  margin:  10px;
+}
+
+.photo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin:  2px;
+}
+
+.friends ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+}
+
+.friends ul li a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.friends ul li {
+  margin: 5px;
+  color: #000000;
+  /*border: 1px solid #000000;*/
+  text-align: center;
+  align-items: center;
+}
+
+.friends span {
+  color: #0057c9;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 12px;
+}
+
+.item a:hover {
+  color: var(--brand-color-hover)
+}
+
+
+.item a.active {
+  color: var(--brand-color-hover)
+}
+
+.friends span {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+

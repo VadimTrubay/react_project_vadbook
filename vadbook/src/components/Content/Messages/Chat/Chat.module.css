@@ -26,3 +26,10 @@ textarea {
   width: 100%;
   resize: none; /* To prevent resizing of the textarea */
 }
+
+.photo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin:  2px;
+}

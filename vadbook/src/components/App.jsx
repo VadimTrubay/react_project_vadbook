@@ -14,27 +14,29 @@ import Contacts from "./Content/Messages/Contacts/Contacts";
 
 function App(props) {
   return (
-    <div className={styles.app}>
-      <BrowserRouter>
-        <Header/>
-        <Footer/>
-        <Navbar/>
-        <Routes>
+    <div className={styles.container}>
+      <div className={styles.app}>
+        <BrowserRouter>
+          <Header/>
+          <Footer/>
+          <Navbar friends={props.contacts}/>
+          <Routes>
 
-          <Route exact path="/messages" element={<Contacts contacts={props.contacts} />}/>
-          <Route path="/music" element={<Music />}/>
-          <Route path="/photo" element={<Photo />}/>
-          <Route path="/profile" element={<Profile />}/>
-          <Route path="/settings" element={<Settings />}/>
-          {props.contacts.map((user) => (
-            <Route
-              key={user.id}
-              path={`/chat/${user.id}`}
-              element={<Messages contacts={props.contacts} user={user} />}
-            />
-          ))}
-        </Routes>
-      </BrowserRouter>
+            <Route exact path="/messages" element={<Contacts contacts={props.contacts}/>}/>
+            <Route path="/music" element={<Music/>}/>
+            <Route path="/photo" element={<Photo/>}/>
+            <Route path="/profile" element={<Profile/>}/>
+            <Route path="/settings" element={<Settings/>}/>
+            {props.contacts.map((user) => (
+              <Route
+                key={user.id}
+                path={`/chat/${user.id}`}
+                element={<Messages contacts={props.contacts} user={user}/>}
+              />
+            ))}
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   );
 }
