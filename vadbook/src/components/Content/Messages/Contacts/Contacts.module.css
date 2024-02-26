@@ -1,25 +1,24 @@
 .contacts {
-  display: flex;
-  flex-direction: row;
+  /*display: flex;*/
+  /*flex-direction: row;*/
   /*width: 120px;*/
   /*height: 400px;*/
-  color: #234345;
-  margin:  10px;
+  /*color: #234345;*/
+  background-color: #5888ce;
+  border-radius: 3px;
+  /*margin:  10px;*/
+  width: 120px;
 }
 
-.contacts ul li a {
+.item a {
+  margin-left: 5px;
   text-decoration: none;
-  color: #000000;
+  color: #ffffff;
+  font-size: 12px;
 }
 
-.contacts ul li {
-  /*list-style-type: none;*/
-  margin: 5px;
+.contacts  span {
   color: #000000;
-}
-
-.contacts span {
-  color: #0057c9;
 }
 
 .item a:hover {
@@ -32,8 +31,8 @@
 }
 
 .nav {
-  border-right: solid 2px #000000;
-  width: 120px;
+  /*border-right: solid 2px #000000;*/
+  margin: 5px 0 0 5px;
 }
 
 

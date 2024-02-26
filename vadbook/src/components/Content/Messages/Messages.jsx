@@ -7,8 +7,8 @@ import Chat from "./Chat/Chat";
 function Messages(props) {
   return (
     <div className={s.messages}>
-      <Contacts contacts={props.contacts} />
-      <Chat user={props.user} />
+      <Contacts state={props.state} />
+      <Chat user={props.user} addPost={props.addPost} />
     </div>
   );
 }

@@ -1,3 +1,7 @@
+.container {
+  max-width: 170px;
+}
+
 .nav {
   grid-area: B;
   background-color: var(--brand-color);

@@ -7,7 +7,7 @@
   --brand-background-color: #eaeaea;
   --brand-second-color: #ffffff;
   --brand-footer-color: #838383;
-  --brand-color-hover: #a1a1a1;
+  --brand-color-hover: #939393;
   --brand-color-black: #000000;
 
 }
@@ -29,7 +29,7 @@ body {
   column-gap:  1px;
   row-gap:  1px;
   grid-template-columns: 130px 7fr;
-  grid-template-rows: 4fr 330px 2fr;
+  grid-template-rows: 5fr 330px 2fr;
   grid-template-areas:
     "A A"
     "B C"

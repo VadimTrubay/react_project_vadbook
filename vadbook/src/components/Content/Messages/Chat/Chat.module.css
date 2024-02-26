@@ -1,5 +1,6 @@
 .container {
-  margin:  10px;
+  margin: 10px;
+  position:relative;
 }
 
 .board > p {
@@ -7,29 +8,34 @@
 }
 
 .board {
+  /*flex: 1;*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+}
+
+.messages {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  overflow-y: auto; /* Enable vertical scrolling for messages */
 }
 
 .input {
-  margin-top: auto; /* This pushes the input section to the bottom */
-  align-self: flex-end;
+  margin-top: 10px;
+  position:absolute; /* добавили */
+  bottom:0; /* добавили */
 }
 
-/* Additional styling for better appearance */
 .board p {
   margin-bottom: 10px;
 }
 
-textarea {
-  width: 100%;
-  resize: none; /* To prevent resizing of the textarea */
+.input textarea {
+  width: 200px;
+  resize: none;
 }
 
 .photo {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  margin:  2px;
+  margin: 2px;
 }

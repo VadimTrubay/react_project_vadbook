@@ -3,7 +3,7 @@ import styles from "./Friends.module.css";
 import {NavLink} from "react-router-dom";
 
 
-const quantityFriends = 2;
+const quantityFriends = 3;
 
 function PrepareData(props) {
   const nawFriends = [];
@@ -21,7 +21,7 @@ function PrepareData(props) {
     <ul>
       {nawFriends.map((contact, index) => (
         <li className={styles.item} key={index}>
-            <img className={styles.photo} src={contact.photo} alt="photo"/>
+            <img className={styles.photo} src={contact.photo} alt="photoFriend"/>
           <NavLink to={`/chat/${contact.id}`} className={checkIsActive(contact)}>
             {contact.name}
           </NavLink>

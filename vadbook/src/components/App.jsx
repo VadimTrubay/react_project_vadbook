@@ -3,7 +3,7 @@ import React from 'react';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import Navbar from "./Navbar/Navbar";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Messages from "./Content/Messages/Messages";
 import Music from "./Content/Music/Music";
 import Photo from "./Content/Photo/Photo";
@@ -16,26 +16,27 @@ function App(props) {
   return (
     <div className={styles.container}>
       <div className={styles.app}>
-        <BrowserRouter>
-          <Header/>
-          <Footer/>
-          <Navbar friends={props.contacts}/>
-          <Routes>
+        <Header/>
+        <Footer/>
+        <Navbar friends={props.state}/>
+        <Routes>
 
-            <Route exact path="/messages" element={<Contacts contacts={props.contacts}/>}/>
-            <Route path="/music" element={<Music/>}/>
-            <Route path="/photo" element={<Photo/>}/>
-            <Route path="/profile" element={<Profile/>}/>
-            <Route path="/settings" element={<Settings/>}/>
-            {props.contacts.map((user) => (
-              <Route
-                key={user.id}
-                path={`/chat/${user.id}`}
-                element={<Messages contacts={props.contacts} user={user}/>}
-              />
-            ))}
-          </Routes>
-        </BrowserRouter>
+          <Route exact path="/messages" element={<Contacts state={props.state}/>}/>
+          <Route path="/music" element={<Music/>}/>
+          <Route path="/photo" element={<Photo/>}/>
+          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/settings" element={<Settings/>}/>
+          {props.state.map((user) => (
+            <Route
+              key={user.id}
+              path={`/chat/${user.id}`}
+              element={<Messages
+                state={props.state}
+                user={user}
+                addPost={props.addPost} />}
+            />
+          ))}
+        </Routes>
       </div>
     </div>
   );
