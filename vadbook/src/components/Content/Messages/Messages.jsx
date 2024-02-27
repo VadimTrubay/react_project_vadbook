@@ -8,7 +8,7 @@ function Messages(props) {
   return (
     <div className={s.messages}>
       <Contacts state={props.state} />
-      <Chat user={props.user} addPost={props.addPost} />
+      <Chat user={props.user} addPost={props.addPost} updatePost={props.updatePost} />
     </div>
   );
 }

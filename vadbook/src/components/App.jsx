@@ -10,6 +10,7 @@ import Photo from "./Content/Photo/Photo";
 import Profile from "./Content/Profile/Profile";
 import Settings from "./Content/Settings/Settings";
 import Contacts from "./Content/Messages/Contacts/Contacts";
+import {updatePost} from "../Redux/state";
 
 
 function App(props) {
@@ -31,6 +32,7 @@ function App(props) {
               key={user.id}
               path={`/chat/${user.id}`}
               element={<Messages
+                updatePost={props.updatePost}
                 state={props.state}
                 user={user}
                 addPost={props.addPost} />}

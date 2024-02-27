@@ -5,7 +5,6 @@ import hello from "./photos/hello.jpg";
 import lion from "./photos/lion.jpg";
 import man from "./photos/man.png";
 import vad from "./photos/vad.jpg";
-import {rerenderEntireTrie} from "../render";
 
 
 const state = [
@@ -16,6 +15,7 @@ const state = [
     posts: [
       {id: 1, message: "hello", likes: 10},
     ],
+    newMessage:  '',
     photo: ya
   },
   {
@@ -91,18 +91,34 @@ const state = [
   }
 ]
 
-export const addPost = (postMessage, userId) => {
+let rerenderEntireTrie = () => {
+  console.log("qwerty")
+}
+
+export const addPost = (userId) => {
 
   const currentUser = state.filter(user => user.id === userId);
 
   const newPost = {
     id: currentUser[0].posts.length + 1,
-    message: postMessage,
+    message: currentUser[0].newMessage,
     likes: 0
   }
 
   currentUser[0].posts.push(newPost);
+  currentUser[0].newMessage = '';
   rerenderEntireTrie(state);
 }
 
-export default state
+export const updatePost = (newMessage, userId) => {
+
+  const currentUser = state.filter(user => user.id === userId);
+  currentUser[0].newMessage = newMessage;
+  rerenderEntireTrie(state);
+}
+
+export const subscribe = (observer) => {
+  rerenderEntireTrie = observer;
+}
+
+export default state;
