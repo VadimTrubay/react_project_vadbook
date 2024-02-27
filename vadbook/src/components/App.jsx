@@ -4,13 +4,12 @@ import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import Navbar from "./Navbar/Navbar";
 import {Route, Routes} from "react-router-dom";
-import Messages from "./Content/Messages/Messages";
 import Music from "./Content/Music/Music";
 import Photo from "./Content/Photo/Photo";
 import Profile from "./Content/Profile/Profile";
 import Settings from "./Content/Settings/Settings";
 import Contacts from "./Content/Messages/Contacts/Contacts";
-import {updatePost} from "../Redux/state";
+import Messages from "./Content/Messages/Messages";
 
 
 function App(props) {
@@ -19,23 +18,19 @@ function App(props) {
       <div className={styles.app}>
         <Header/>
         <Footer/>
-        <Navbar friends={props.state}/>
+        <Navbar store={props.store}/>
         <Routes>
 
-          <Route exact path="/messages" element={<Contacts state={props.state}/>}/>
+          <Route exact path="/messages" element={<Contacts store={props.store}/>}/>
           <Route path="/music" element={<Music/>}/>
           <Route path="/photo" element={<Photo/>}/>
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/settings" element={<Settings/>}/>
-          {props.state.map((user) => (
+          {props.store.getState().map((user) => (
             <Route
               key={user.id}
               path={`/chat/${user.id}`}
-              element={<Messages
-                updatePost={props.updatePost}
-                state={props.state}
-                user={user}
-                addPost={props.addPost} />}
+              element={<Messages store={props.store} userId={user.id} />}
             />
           ))}
         </Routes>
@@ -43,5 +38,4 @@ function App(props) {
     </div>
   );
 }
-
 export default App;

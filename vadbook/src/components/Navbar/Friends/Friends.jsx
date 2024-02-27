@@ -6,13 +6,14 @@ import {NavLink} from "react-router-dom";
 const quantityFriends = 3;
 
 function PrepareData(props) {
+  const getState = props.store.getState();
   const nawFriends = [];
   const checkIsActive = ({isActive}) => (isActive ? `${styles.active}` : '');
 
   while (nawFriends.length < quantityFriends) {
-    const randomContact = props.friends[Math.floor(Math.random() * props.friends.length)];
+    const randomContact = getState[Math.floor(Math.random() * getState.length)];
 
-    if (!nawFriends.some(contact => contact.id === randomContact.id)) {
+    if (!nawFriends.some(contact => contact === randomContact)) {
       nawFriends.push(randomContact);
     }
   }
@@ -22,7 +23,7 @@ function PrepareData(props) {
       {nawFriends.map((contact, index) => (
         <li className={styles.item} key={index}>
             <img className={styles.photo} src={contact.photo} alt="photoFriend"/>
-          <NavLink to={`/chat/${contact.id}`} className={checkIsActive(contact)}>
+          <NavLink to={`/chat/${contact}`} className={checkIsActive(contact)}>
             {contact.name}
           </NavLink>
         </li>
@@ -38,7 +39,7 @@ function Friends(props) {
       <span>Friends</span>
       <nav>
         <ul>
-          <PrepareData friends={props.friends}/>
+          <PrepareData store={props.store}/>
         </ul>
       </nav>
     </div>

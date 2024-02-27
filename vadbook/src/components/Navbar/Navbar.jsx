@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
-import Friends from "./Friends/Friends";
+// import Friends from "./Friends/Friends";
 
 function Navbar(props) {
   const checkIsActive = ({isActive}) => isActive ? `${styles.active}` : ""
@@ -16,11 +16,10 @@ function Navbar(props) {
         <div className={styles.item}><NavLink to="/settings" className={checkIsActive}>Settings</NavLink></div>
       </nav>
       <div className={styles.friends}>
-        <Friends friends={props.friends} />
+        {/*<Friends store={props.store} />*/}
       </div>
     </div>
-  )
-    ;
+  );
 }
 
 export default Navbar;
