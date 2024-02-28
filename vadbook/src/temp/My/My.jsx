@@ -6,7 +6,7 @@ function My(props) {
   return (
     <div className={styles.my}>
       <p>
-        message:
+        message: {props.store.getStateById(props.userId).photo}
       </p>
       <p>likes: </p>
     </div>

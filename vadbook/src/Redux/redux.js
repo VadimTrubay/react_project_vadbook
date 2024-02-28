@@ -11,7 +11,7 @@ let store = {
       name: "bob",
       age: 23,
       posts: [
-        {id: 1, name: "bob", message: "hellobob", likes: 3}
+        {id: 1, name: "bob", message: "hello bob", likes: 1},
       ],
       newMessage: '',
       photo: bob
@@ -25,6 +25,16 @@ let store = {
       ],
       newMessage: '',
       photo: gam
+    },
+    {
+      id: 3,
+      name: "vad",
+      age: 23,
+      posts: [
+        {id: 1, name: "vad", message: "hellovad", likes: 1}
+      ],
+      newMessage: '',
+      photo: vad
     }
   ],
 
@@ -40,64 +50,36 @@ let store = {
     return this.state.find(state => state.id === userId).posts
   },
 
-  // getNameById(userId) {
-  //   return this.state.filter(state => state.id === userId).filter(user => user.name === userId);
-  // },
-
-  // getAge(userId) {
-  //   return this.state.filter(user => user.age === userId);
-  // },
-  //
-  // getPostId(userId, postId) {
-  //   return this.state.filter(state => state.id === userId).filter(post => post.id === postId);
-  // },
-  //
-  // getPostName(userId, postId) {
-  //   return this.state.filter(state => state.id === userId).filter(post => post.id === postId).filter(post => post.name === postId);
-  // },
-  //
-  // getPostMessage(userId, postId) {
-  //   return this.state.filter(state => state.id === userId).filter(post => post.id === postId).filter(post => post.message === postId);
-  // },
-  //
-  // getPostLikes(userId, postId) {
-  //   return this.state.filter(state => state.id === userId).filter(post => post.id === postId).filter(post => post.likes === postId);
-  // },
-
-  // getPhotoById(userId) {
-  //   let myPhoto = this.state.filter(state => state.id === userId);
-  //   console.log(myPhoto, '!!!!!!!!!')
-  //   return myPhoto;
-  // },
-
-  addPost() {
+  addPost(userId) {
     const newPost = {
-      id: this.getState().posts.length + 1,
+      id: this.getStateById(userId).posts.length + 1,
       name: 'my',
-      message: this.getState().newMessage,
+      message: this.getStateById(userId).newMessage,
       likes: 0,
-      photo: vad
     }
-    this.getState().posts.push(newPost);
-    this.getState().newMessage = '';
+    this.getStateById(userId).posts.push(newPost);
+    this.getStateById(userId).newMessage = '';
     this._subscriber();
-    // console.log('addPost!!!!!!!', this.getState().posts)
+    console.log('addPost!!!!!!!', this.getStateById(userId).posts)
   },
 
-  updatePost(newMessage) {
-    this.getState().newMessage = newMessage;
-    // console.log(this.getState().newMessage, '!!!!!!!!!')
+  updatePost(newMessage, userId) {
+    this.getStateById(userId).newMessage += newMessage;
+    const res = this.getStateById(userId).newMessage
+    console.log(res, '!!!!!!!!!')
     this._subscriber();
   },
 
   _subscriber() {
-    // console.log('')
+    // console.log('sub')
   },
 
   subscribe(observer) {
     this._subscriber = observer;
   },
 }
+
+window.store = store;
 
 export default store;
 

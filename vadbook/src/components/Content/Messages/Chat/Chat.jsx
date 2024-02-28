@@ -1,46 +1,46 @@
 import styles from "./Chat.module.css";
 import React from "react";
-import Friend from "./Friend/Friend";
-// import My from "./My/My";
-
-
 
 function Chat(props) {
-  // const currentPost = props.currentPost;
-  // const newPost = React.createRef();
-  //
-  // const renderPost = () => {
-  //   const postMessage = newPost.current.value;
-  //   if (postMessage){
-  //     props.store.addPost();
-  //   }
-  // }
-  //
-  // const onPostChange = () => {
-  //   const postMessage = newPost.current.value;
-  //   props.store.updatePost(postMessage);
-  // }
-        //   <div className={styles.messages}>
-        //   <img className={styles.photo} src={''} alt="photoMe"/>
-        //   <Me store={props.store}/>
-        // </div>
-        // <div className={styles.input}>
-        //   <textarea onChange={onPostChange} value={props.store.getPosts().newMessage} ref={newPost} cols="40" rows="2"/>
-        //   <button onClick={renderPost}>Add post</button>
-        // </div>
+  const newPost = React.createRef();
+  const userState = props.store.getStateById(props.userId);
 
-  return (<div className={styles.container}>
+  const renderPost = () => {
+    const postMessage = newPost.current.value;
+    // if (postMessage.trim()) {
+      props.store.addPost(props.userId);
+    // }
+  }
+
+  const onPostChange = () => {
+    const postMessage = newPost.current.value;
+    props.store.updatePost(postMessage, props.userId);
+  }
+
+  return (
+    <div className={styles.container}>
       <div className={styles.board}>
         <p>Chat</p>
         <div className={styles.messages}>
-          <img className={styles.photo} src={props.store.getStateById(props.userId).photo} alt="photoUser"/>
-          {props.store.getStateById(props.userId).name}: <Friend store={props.store} userId={props.userId} />
+          {/*<img className={styles.photo} src={userState.photo} alt="photoUser"/>*/}
+          {/*{userState.name}*/}
+          {userState.posts.map(post => (
+            <p key={post.id}>name: {post.name}<br/>message: {post.message}<br/>likes: {post.likes}</p>
+          ))}
         </div>
-
+        <div className={styles.input}>
+          <textarea
+            value={userState.newMessage}
+            onChange={onPostChange}
+            ref={newPost}
+            cols="40"
+            rows="2"
+          />
+          <button onClick={renderPost}>Add post</button>
+        </div>
       </div>
     </div>
   );
-
 }
 
 export default Chat;
