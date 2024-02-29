@@ -10,12 +10,15 @@ import store from "./Redux/redux";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(
-  <BrowserRouter>
-    <React.StrictMode>
-      <App store={store}/>
-    </React.StrictMode>
-  </BrowserRouter>
-)
-
+let rerenderEntireTree = (state) => {
+  root.render(
+    <BrowserRouter>
+      <React.StrictMode>
+        <App store={store}/>
+      </React.StrictMode>
+    </BrowserRouter>
+  )
+}
+rerenderEntireTree(store.getState())
+store._subscriber(rerenderEntireTree)
 reportWebVitals();

@@ -59,7 +59,7 @@ let store = {
     }
     this.getStateById(userId).posts.push(newPost);
     this.getStateById(userId).newMessage = '';
-    this._subscriber();
+    this._subscriber(this.state);
     console.log('addPost!!!!!!!', this.getStateById(userId).posts)
   },
 
@@ -67,7 +67,7 @@ let store = {
     this.getStateById(userId).newMessage += newMessage;
     const res = this.getStateById(userId).newMessage
     console.log(res, '!!!!!!!!!')
-    this._subscriber();
+    this._subscriber(this.state);
   },
 
   _subscriber() {
@@ -79,8 +79,8 @@ let store = {
   },
 }
 
-window.store = store;
 
 export default store;
 
 
+window.store = store;
