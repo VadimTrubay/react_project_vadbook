@@ -1,24 +1,28 @@
 import './index.css';
 import reportWebVitals from './tests/reportWebVitals';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from "./components/App";
+import ReactDOM from "react-dom/client";
 import {BrowserRouter} from "react-router-dom";
+import React from "react";
+import App from "./components/App";
 import store from "./Redux/redux";
 
+let root = ReactDOM.createRoot(document.getElementById('root'));
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-let rerenderEntireTree = (state) => {
+export let rerenderPage = (state) => {
   root.render(
     <BrowserRouter>
       <React.StrictMode>
-        <App store={store}/>
+        <App store={store} />
       </React.StrictMode>
     </BrowserRouter>
-  )
-}
-rerenderEntireTree(store.getState())
-store._subscriber(rerenderEntireTree)
+  );
+};
+
+rerenderPage(store.getState());
+
+store.subscribe(() => {
+  let state = store.getState();
+  rerenderPage(state);
+})
+
 reportWebVitals();

@@ -1,20 +1,23 @@
 import styles from "./Chat.module.css";
 import React from "react";
+import {likes} from "./images/likes";
+import {addPostActionCreator, updatePostActionCreator} from "../../../../Redux/redux";
+
 
 function Chat(props) {
-  const newPost = React.createRef();
-  // const userState = props.store.getStateById(props.userId);
+  let userState = props.store.getStateById(props.userId);
+  let newPost = React.createRef();
 
-  const renderPost = () => {
-    const postMessage = newPost.current.value;
-    // if (postMessage.trim()) {
-      props.store.addPost(props.userId);
-    // }
+  let addPost = () => {
+    let newValue = newPost.current.value;
+    if (newValue) {
+      props.store.dispatch(addPostActionCreator(props.userId));
+    }
   }
 
-  const onPostChange = () => {
-    const postMessage = newPost.current.value;
-    props.store.updatePost(postMessage, props.userId);
+  let updatePost = () => {
+    let newValue = newPost.current.value;
+    props.store.dispatch(updatePostActionCreator(props.userId, newValue));
   }
 
   return (
@@ -22,21 +25,23 @@ function Chat(props) {
       <div className={styles.board}>
         <p>Chat</p>
         <div className={styles.messages}>
-          {/*<img className={styles.photo} src={userState.photo} alt="photoUser"/>*/}
           {/*{userState.name}*/}
-          {props.store.getStateById(props.userId).posts.map(post => (
-            <p key={post.id}>name: {post.name}<br/>message: {post.message}<br/>likes: {post.likes}</p>
-          ))}
+          {userState.posts.map(post => (
+            <p key={post.id}><img className={styles.photo} src={post.photo} alt="photoUser"/>
+              <span className={styles.name}>{post.name} </span>-- {post.message} -- { likes }:{post.likes}
+            </p>
+          ))
+          }
         </div>
         <div className={styles.input}>
           <textarea
             value={props.store.getStateById(props.userId).newMessage}
-            onChange={onPostChange}
+            onChange={updatePost}
             ref={newPost}
             cols="40"
             rows="2"
           />
-          <button onClick={renderPost}>Add post</button>
+          <button onClick={addPost}>Add post</button>
         </div>
       </div>
     </div>

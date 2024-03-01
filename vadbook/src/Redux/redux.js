@@ -1,86 +1,103 @@
 import bob from "./photos/bob.jpg"
 import gam from "./photos/gam.jpg";
 import vad from "./photos/vad.jpg";
+import lion from "./photos/lion.jpg";
 
+
+const ADD_MESSAGE = 'ADD_MESSAGE';
+const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
 
 let store = {
 
-  state: [
+  subscribe(observer) {
+    this._subscriber = observer;
+  },
+
+  _subscriber() {
+    console.log('_subscriber');
+  },
+
+  _state: [
     {
       id: 1,
       name: "bob",
       age: 23,
       posts: [
-        {id: 1, name: "bob", message: "hello bob", likes: 1},
+        {id: 1, name: "bob", message: "hello bob", likes: 1, photo: bob},
       ],
-      newMessage: '',
-      photo: bob
+      newMessage: ''
     },
     {
       id: 2,
       name: "gam",
       age: 23,
       posts: [
-        {id: 1, name: "gam", message: "hellogam", likes: 5}
+        {id: 1, name: "gam", message: "hellogam", likes: 5, photo: gam}
       ],
-      newMessage: '',
-      photo: gam
+      newMessage: ''
     },
     {
       id: 3,
       name: "vad",
       age: 23,
       posts: [
-        {id: 1, name: "vad", message: "hellovad", likes: 1}
+        {id: 1, name: "lion", message: "hellolion", likes: 1, photo: lion}
       ],
-      newMessage: '',
-      photo: vad
+      newMessage: ''
     }
   ],
 
   getState() {
-    return this.state
+    return this._state;
   },
 
   getStateById(userId) {
-    return this.state.find(state => state.id === userId)
+    return this._state.find(stateId => stateId.id === userId)
   },
 
-  getPostsByUserId(userId) {
-    return this.state.find(state => state.id === userId).posts
-  },
-
-  addPost(userId) {
-    const newPost = {
-      id: this.getStateById(userId).posts.length + 1,
+  addMessage(userId) {
+    let getState = this.getStateById(userId)
+    let newPost = {
+      id: getState.posts.length + 1,
       name: 'my',
-      message: this.getStateById(userId).newMessage,
+      message: getState.newMessage,
       likes: 0,
+      photo: vad
     }
-    this.getStateById(userId).posts.push(newPost);
-    this.getStateById(userId).newMessage = '';
-    this._subscriber(this.state);
-    console.log('addPost!!!!!!!', this.getStateById(userId).posts)
+    getState.posts.push(newPost);
+    getState.newMessage = '';
+    this._subscriber(store);
   },
 
-  updatePost(newMessage, userId) {
-    this.getStateById(userId).newMessage += newMessage;
-    const res = this.getStateById(userId).newMessage
-    console.log(res, '!!!!!!!!!')
-    this._subscriber(this.state);
+  updateMessage(newValue, userId) {
+    let currentState = this.getStateById(userId);
+    currentState.newMessage = newValue;
+    this._subscriber(store);
   },
 
-  _subscriber() {
-    // console.log('sub')
+  dispatch(action) { // type: "ADD-MESSAGE"
+    switch (action.type) {
+      case ADD_MESSAGE:
+        this.addMessage(action.userId);
+        break;
+      case UPDATE_MESSAGE:
+        this.updateMessage(action.newValue, action.userId);
+        break;
+      default:
+        break;
+    }
   },
+}
 
-  subscribe(observer) {
-    this._subscriber = observer;
-  },
+export let addPostActionCreator = (userId) => {
+  return {type: ADD_MESSAGE, userId: userId}
+}
+
+export let updatePostActionCreator = (userId, newValue) => {
+  return {type: UPDATE_MESSAGE, userId: userId, newValue: newValue}
 }
 
 
 export default store;
-
 
 window.store = store;
