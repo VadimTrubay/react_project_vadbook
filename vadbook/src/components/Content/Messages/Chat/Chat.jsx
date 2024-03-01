@@ -10,13 +10,15 @@ function Chat(props) {
 
   let addPost = () => {
     let newValue = newPost.current.value;
+    // let newValue = e.target.value;
     if (newValue) {
       props.store.dispatch(addPostActionCreator(props.userId));
     }
   }
 
-  let updatePost = () => {
-    let newValue = newPost.current.value;
+  let updatePost = (e) => {
+    // let newValue = newPost.current.value;
+    let newValue = e.target.value;
     props.store.dispatch(updatePostActionCreator(props.userId, newValue));
   }
 

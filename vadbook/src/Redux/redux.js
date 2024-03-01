@@ -23,7 +23,11 @@ let store = {
       name: "bob",
       age: 23,
       posts: [
-        {id: 1, name: "bob", message: "hello bob", likes: 1, photo: bob},
+        {id: 1,
+          name: "bob",
+          message: "hello bob",
+          likes: 1,
+          photo: bob},
       ],
       newMessage: ''
     },
@@ -32,7 +36,11 @@ let store = {
       name: "gam",
       age: 23,
       posts: [
-        {id: 1, name: "gam", message: "hellogam", likes: 5, photo: gam}
+        {id: 1,
+          name: "gam",
+          message: "hellogam",
+          likes: 5,
+          photo: gam}
       ],
       newMessage: ''
     },
@@ -41,7 +49,11 @@ let store = {
       name: "vad",
       age: 23,
       posts: [
-        {id: 1, name: "lion", message: "hellolion", likes: 1, photo: lion}
+        {id: 1,
+          name: "lion",
+          message: "hellolion",
+          likes: 1,
+          photo: lion}
       ],
       newMessage: ''
     }
@@ -89,13 +101,10 @@ let store = {
   },
 }
 
-export let addPostActionCreator = (userId) => {
-  return {type: ADD_MESSAGE, userId: userId}
-}
+export let addPostActionCreator = (userId) => ({type: ADD_MESSAGE, userId: userId})
 
-export let updatePostActionCreator = (userId, newValue) => {
-  return {type: UPDATE_MESSAGE, userId: userId, newValue: newValue}
-}
+export let updatePostActionCreator = (userId, newValue) =>
+  ({type: UPDATE_MESSAGE, userId: userId, newValue: newValue})
 
 
 export default store;
