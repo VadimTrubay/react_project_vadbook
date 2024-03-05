@@ -7,6 +7,7 @@ function PrepareData(props) {
   const getPosts = props.store.getState();
   return (getPosts.map((user) => (
     <div
+      key={user.id}
       className={styles.item}><NavLink to={`/chat/${user.id}`}
       className={checkIsActive}>{user.name}</NavLink>
     </div>
