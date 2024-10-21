@@ -10,12 +10,28 @@ import Profile from "./Content/Profile/Profile";
 import Settings from "./Content/Settings/Settings";
 import Contacts from "./Content/Messages/Contacts/Contacts";
 import Messages from "./Content/Messages/Messages";
+import {ToastContainer} from "react-toastify";
 
 
 function App(props) {
   return (
     <div className={styles.container}>
       <div className={styles.app}>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition: Bounce,
+        />
+        {/* Same as */}
+        <ToastContainer/>
         <Header/>
         <Footer/>
         <Navbar store={props.store}/>
@@ -30,7 +46,7 @@ function App(props) {
             <Route
               key={user.id}
               path={`/chat/${user.id}`}
-              element={<Messages store={props.store} userId={user.id} />}
+              element={<Messages store={props.store} userId={user.id}/>}
             />
           ))}
         </Routes>
@@ -38,4 +54,5 @@ function App(props) {
     </div>
   );
 }
+
 export default App;
